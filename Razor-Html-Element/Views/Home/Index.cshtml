@@ -1,0 +1,64 @@
+﻿ 
+ 
+ 
+ @model Student
+
+<div class="text-center">
+ 
+
+  
+
+  <!--Html Olarak input oluşturma-->  
+  <input type="text" name="name"  value="Emrah"/>
+
+  <!--Razor olarak input oluşturma : Razor inputlar direk model üzerinden oluşturula bildiği için, model yazmaya sizi zorlayacaktır. Buda düzgün kod yazmanızı sağlar.-->
+    @Html.TextBoxFor(s=>s.Name)
+
+
+    <!--Html olarak textarefor-->
+    <textarea></textarea>
+
+    <!--Razor olarak text area for-->
+    @Html.TextAreaFor(s=>s.Email)
+
+    <!--Html Olarak Password-->
+    <input type="password" value=@Model.Password />
+
+
+    <!--Razor olarak password-->
+    @Html.PasswordFor(s=>s.Password)
+
+
+    <!--Html olarak dropdown select ve option ile yapılabilir.-->
+
+    <select>
+        <option>Matematik</option>
+        <option>Fizik</option>
+        <option>Geometri</option>
+        <option>Din</option>
+        <option>Türkçe</option>
+    </select>
+
+
+
+    <!--<form method="post" action="/Home/Index"></form>-->
+
+
+    @using  (@Html.BeginForm("Index","Home",FormMethod.Post))
+    {
+        <!--Razor tarafında dropdown doldurma-->
+        @Html.DropDownListFor(s => s.SelectedId, Model.Lessons, "Lütfen seçim yapınız", new { @class = "drop" })
+        @Html.HiddenFor(s => s.SelectedId)
+
+
+         <input  type="submit" value="gönder"/>
+    
+    }
+
+   
+
+
+    
+
+
+</div>
